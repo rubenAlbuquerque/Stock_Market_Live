@@ -1,0 +1,60 @@
+
+.QFrame#Frame {
+	background-color: none;
+	border-color: #191919;
+}
+
+.QLineEdit {
+	border: 0;
+	background: #191919;
+	display: block;
+	border: 2px solid #3498db;
+	font-size: 25px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+}
+
+.QLineEdit:focus {
+	border-color: #2ecc71;
+}
+
+.QPushButton#newpass { 
+	border: 0;
+	background-color: none;
+	color: rgb(0, 0, 220);
+	text-align: center;
+	font-size: 18px;
+}
+
+.QPushButton#newpass:hover {
+	color: rgb(0, 0, 120);
+	text-decoration: underline;
+ }
+
+.QPushButton#btn_login {
+	background-color: none;
+	color: white;
+	border: 3px solid #2ecc71;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 25px;
+}
+
+.QPushButton#btn_login:hover {
+	background: #2ecc71
+}
+
+.QPushButton#new_account {
+	border: 0;
+	background-color: none;
+	color: rgb(185, 122, 87);
+	text-align: center;
+	font-size: 18px;
+}
+
+.QPushButton#new_account:hover {
+	color: rgb(109, 68, 46);
+	text-decoration: underline;
+}
+
