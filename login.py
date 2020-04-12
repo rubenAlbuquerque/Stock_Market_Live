@@ -1,9 +1,12 @@
 
+
 import sys
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
+
+from create_account import Ui_NewUser
 
 class MainWindow():
 
@@ -12,50 +15,86 @@ class MainWindow():
         self.app = QApplication(sys.argv)
         self.window = QMainWindow()
 
-        with open('style.qss') as f:
+        with open('style.css') as f:
             self.style = f.read()
 
+        self.width = 1700
+        self.height = 850
         self.initUI()
         self.window.setWindowTitle(" ")
         self.window.setWindowIcon(QIcon('Capturar.PNG'))
-        self.window.setGeometry(100, 100, 1700, 850)
+        self.window.setGeometry(100, 100, self.width, self.height)
+        self.window.setFixedSize(1700, 850)
+
+        # image backgroud
+        oImage = QImage("Login_image.jpg")
+        sImage = oImage.scaled(QSize(1700, 850))  # resize Image to widgets size
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage))  # 10 = Windowrole
+        self.window.setPalette(palette)
 
         self.window.show()
         self.app.setStyleSheet(self.style)
         sys.exit(self.app.exec_())
 
-
-
-
     def initUI(self):
-        with open('style.qss') as f:
-            stylesheet = f.read()
+        # Frame
+        self.frame = QFrame(self.window)
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setObjectName("Frame")
+        self.frame.resize(500, 550)
+        self.frame.move(600, 150)
 
-        # self.setFixedSize(240, 480)
+        # Textbox: username
+        self.userfild = QLineEdit(self.window)
+        self.userfild.setPlaceholderText("Username or Email ")
+        self.userfild.setAlignment(Qt.AlignCenter)
+        self.userfild.resize(400, 60)
+        self.userfild.move(650, 300)
+
+        # Textbox: Password
+        self.password = QLineEdit(self.window)
+        self.password.setPlaceholderText("Password ")
+        self.password.setAlignment(Qt.AlignCenter)
+        self.password.resize(400, 60)
+        self.password.move(650, 380)
+
+        # New Password
+        self.new_pass = QPushButton("Forgot your password ?", self.window)
+        self.new_pass.setObjectName("newpass")
+        # .clicked.connect()
+        self.new_pass.resize(200, 30)
+        self.new_pass.move(820, 450)
+
+        # Log in
+        self.okButton = QPushButton("LOGIN", self.window)
+        self.okButton.setObjectName("btn_login")
+        # .clicked.connect()
+        self.okButton.resize(300, 60)
+        self.okButton.move(700, 540)
+
+        # Register
+        self.new_account = QPushButton("Create new account", self.window)
+        self.new_account.setObjectName("new_account")
+        self.new_account.clicked.connect(self.create_account)
+        self.new_account.resize(300, 60)
+        self.new_account.move(700, 620)
+
+    def create_account(self):
+        print("frsaaame")
+        self.otherWindow = QMainWindow()
+        self.ui = Ui_NewUser()
+        self.ui.setupUi(self.otherWindow)
+        MainWindow.hide()
+        self.otherWindow.show()
 
 
-        self.okButton = QPushButton("OK", self.window)
-        self.okButton.move(10, 100)
-        self.cancelButton = QPushButton("Cancel", self.window)
 
-
-        """"
-        hbox.addWidget(cancelButton)
-
-        hbox.addWidget(cancelButton)
-
-        vbox = QVBoxLayout()
-        vbox.addStretch(1)
-        vbox.addLayout(hbox)
-        vbox.addStretch(1)
-        vbox.addStretch(1)
-
-        self.setLayout(vbox)
-        """
 
 if __name__ == '__main__':
-
     ex = MainWindow()
+
+
 
 
 
