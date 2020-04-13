@@ -1,12 +1,11 @@
 
-
 import sys
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 
-from create_account import Ui_NewUser
+from register import Ui_MainWindow
 
 class MainWindow():
 
@@ -37,6 +36,12 @@ class MainWindow():
         self.app.setStyleSheet(self.style)
         sys.exit(self.app.exec_())
 
+    def create_account(self):
+        self.OtherWindow = QMainWindow()
+        ui = Ui_MainWindow(self.OtherWindow)
+        # ui.setupUi(self.OtherWindow)
+        self.window.hide()
+
     def initUI(self):
         # Frame
         self.frame = QFrame(self.window)
@@ -45,9 +50,9 @@ class MainWindow():
         self.frame.resize(500, 550)
         self.frame.move(600, 150)
 
-        # Textbox: username
+        # Textbox: Email
         self.userfild = QLineEdit(self.window)
-        self.userfild.setPlaceholderText("Username or Email ")
+        self.userfild.setPlaceholderText("Email ")
         self.userfild.setAlignment(Qt.AlignCenter)
         self.userfild.resize(400, 60)
         self.userfild.move(650, 300)
@@ -79,14 +84,6 @@ class MainWindow():
         self.new_account.clicked.connect(self.create_account)
         self.new_account.resize(300, 60)
         self.new_account.move(700, 620)
-
-    def create_account(self):
-        print("frsaaame")
-        self.otherWindow = QMainWindow()
-        self.ui = Ui_NewUser()
-        self.ui.setupUi(self.otherWindow)
-        MainWindow.hide()
-        self.otherWindow.show()
 
 
 
