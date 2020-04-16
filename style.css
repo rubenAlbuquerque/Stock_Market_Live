@@ -1,8 +1,8 @@
-
 .QFrame#Frame {
-	background-color: none;
-	border-color: #191919;
+	background-color: rgba(59, 67, 173, 0.158);
+	border: 0;
 }
+
 
 .QLineEdit {
 	border: 0;
@@ -13,6 +13,7 @@
 	outline: none;
 	color: white;
 	border-radius: 24px;
+
 }
 
 .QLineEdit:focus {
